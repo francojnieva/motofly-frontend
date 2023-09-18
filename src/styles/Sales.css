@@ -1,0 +1,52 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
+  padding: 1.25em;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.row-one,
+.row-two {
+  grid-column: 1;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  border: 1px solid #ccc;
+  margin: 0.625em;
+  padding: 0.625em;
+  background-color: #ffffff;
+}
+
+.row-one {
+  grid-row: 1;
+}
+
+.row-two {
+  grid-row: 2;
+}
+
+.col-one {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  border: 1px solid #ccc;
+  margin: 0.625em;
+  padding: 0.625em;
+  background-color: #ffffff;
+}
+
+.img-product {
+  width: 50%;
+}
+
+.description-product {
+  width: 50%; 
+}
+
+.text-product {
+  color: #333;
+  font-size: 1rem;
+}

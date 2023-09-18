@@ -1,0 +1,76 @@
+.cf-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+  linear-gradient(145deg, transparent 30%,#ff1c1c, #f35d07) border-box;
+  border: .15rem solid transparent;
+}
+
+@media screen and (min-width: 320px) {
+  .cf-form {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cf-form {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cf-form {
+    width: 40%;
+  }
+
+  .text-container {
+    width: 50%;
+    padding: 0rem 1rem;
+  }
+
+  .iframe-container {
+    width: 50%;
+    padding: 0rem 1rem;
+    
+  }
+
+  .iframe-container iframe {
+  height: 50vh;
+  }
+}
+  
+.cf-form input,
+.cf-form textarea {
+  margin: .8em 0rem;
+  padding: 0.5em;
+  resize: none;
+}
+  
+.cf-form button {
+  margin-top: 1em;
+  color: #fff;
+  background-color: #d81525;
+  transition: .3s;
+}
+
+.cf-form button:hover {
+  background-color: #d81525e8;
+  color: white;
+}
+
+.cf-form p {
+  color: red;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+  
+  
+
+
+
+
+
