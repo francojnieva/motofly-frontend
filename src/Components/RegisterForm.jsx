@@ -87,7 +87,7 @@ function RegisterForm() {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center align-items-center register-container">
       <div className="form-container m-4 col col-md-9 col-lg-6">
         <h2 className="mb-4 fw-bolder">Registro</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="w-100">
@@ -133,12 +133,24 @@ function RegisterForm() {
               rules={{
                 required: "Por favor, ingrese un correo electrónico",
                 pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,3}$/i,
                   message: "Ingrese una dirección de correo electrónico válida",
+                },
+                minLength: {
+                  value: 6,
+                  message:
+                    "La dirección de correo debe tener entre 6 y 20 caracteres",
+                },
+                maxLength: {
+                  value: 20,
+                  message:
+                    "La dirección de correo debe tener menos de 20 caracteres",
                 },
               }}
               render={({ field }) => (
                 <input
+                  minLength="6"
+                  maxLength="20"
                   type="email"
                   placeholder="Dirección de correo electrónico"
                   autoComplete="off"
@@ -160,12 +172,18 @@ function RegisterForm() {
                 required: "Por favor, ingrese una contraseña",
                 minLength: {
                   value: 10,
-                  message: "La contraseña debe tener al menos 10 caracteres",
+                  message: "La contraseña debe tener entre 10 y 30 caracteres",
+                },
+                maxLength: {
+                  value: 30,
+                  message:
+                    "La contraseña debe tener menos de 30 caracteres",
                 },
               }}
               render={({ field }) => (
                 <input
                   minLength="10"
+                  maxLength="30"
                   type="password"
                   placeholder="Contraseña"
                   autoComplete="off"

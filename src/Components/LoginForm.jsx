@@ -23,7 +23,7 @@ function LoginForm() {
   };
 
   return (
-    <div className='d-flex justify-content-center align-items-center'>
+    <div className='d-flex justify-content-center align-items-center login-container'>
       <div className='color-base'></div>
       <div className='form-container m-4 col col-md-9 col-lg-6'>
         <h2 className='mb-4 fw-bolder'>Iniciar sesión</h2>
@@ -39,9 +39,21 @@ function LoginForm() {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,3}$/i,
                   message: 'Ingrese una dirección de correo electrónico válida.',
                 },
+                minLength: {
+                  value: 6,
+                  message:
+                    "La dirección de correo debe tener entre 6 y 20 caracteres",
+                },
+                maxLength: {
+                  value: 20,
+                  message:
+                    "La dirección de correo debe tener menos de 20 caracteres",
+                },
               }}
               render={({ field }) => (
                 <input
+                  minLength="6"
+                  maxLength="20"
                   type='email'
                   placeholder='Dirección de correo electrónico'
                   autoComplete='off'
@@ -67,10 +79,16 @@ function LoginForm() {
                   value: 10,
                   message: 'La contraseña debe tener al menos 10 caracteres.',
                 },
+                maxLength: {
+                  value: 30,
+                  message:
+                    "La contraseña debe tener menos de 30 caracteres",
+                },
               }}
               render={({ field }) => (
                 <input
                   minLength="10"
+                  maxLength="30"
                   type='password'
                   placeholder='Contraseña'
                   autoComplete='off'

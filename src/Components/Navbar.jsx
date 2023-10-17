@@ -28,7 +28,7 @@ function NavBar() {
           
           <Navbar.Collapse
             id="basic-navbar-nav"
-            className="d-lg-flex justify-content-lg-end"
+            className="d-lg-flex justify-content-lg-end search-icon-container"
           >  <div className="container-search p-2">
           <Form className="d-flex bg-light rounded-pill">
             <SearchBar />
@@ -42,12 +42,12 @@ function NavBar() {
                   <UserDropdown userData={userData} />
                 ) : (
                   <>
-                    <Link to="/login" className="btn-login">
+                    <Link to="/login" className="btn-login ms-5">
                       <button className="m-3 btn text-white">
                         Iniciar sesión
                       </button>
                     </Link>
-                    <Link to="/register" className="btn-login">
+                    <Link to="/register" className="btn-login ms-3">
                       <button className="m-3 btn text-white">Registrarme</button>
                     </Link>
                   </>

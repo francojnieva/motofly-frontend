@@ -45,7 +45,7 @@ export const CreateProduct = () => {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Por favor complete todos los campos correctamente.",
+        text: "Por favor complete todos los campos",
       })
       return
     }
@@ -84,6 +84,7 @@ export const CreateProduct = () => {
           <Form.Label>Título:</Form.Label>
           <Form.Control
             type="text"
+            autoComplete="off"
             name="title"
             value={newProduct.title}
             onChange={handleInputChange}
@@ -116,6 +117,7 @@ export const CreateProduct = () => {
           <Form.Label>Descripción:</Form.Label>
           <Form.Control
             type="text"
+            autoComplete="off"
             name="description"
             value={newProduct.description}
             onChange={handleInputChange}
@@ -136,6 +138,7 @@ export const CreateProduct = () => {
           <Form.Label>Categoría:</Form.Label>
           <Form.Control
             type="text"
+            autoComplete="off"
             name="category"
             value={newProduct.category}
             onChange={handleInputChange}
