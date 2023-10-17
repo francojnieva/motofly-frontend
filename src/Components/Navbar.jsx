@@ -42,12 +42,12 @@ function NavBar() {
                   <UserDropdown userData={userData} />
                 ) : (
                   <>
-                    <Link to="/login" className="btn-login ms-5">
+                    <Link to="/login" className="btn-login">
                       <button className="m-3 btn text-white">
                         Iniciar sesión
                       </button>
                     </Link>
-                    <Link to="/register" className="btn-login ms-3">
+                    <Link to="/register" className="btn-login">
                       <button className="m-3 btn text-white">Registrarme</button>
                     </Link>
                   </>
