@@ -100,11 +100,23 @@ const ContactForm = () => {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,3}$/i,
               message: 'Dirección de correo inválida',
             },
+            minLength: {
+              value: 6,
+              message:
+                "La dirección de correo debe tener entre 6 y 20 caracteres",
+            },
+            maxLength: {
+              value: 20,
+              message:
+                "La dirección de correo debe tener menos de 20 caracteres",
+            },
           }}
           render={({ field }) => (
             <div>
               <input
                 {...field}
+                minLength="6"
+                maxLength="20"
                 placeholder="Dirección de correo electrónico"
                 autoComplete="off"
                 type="email"
