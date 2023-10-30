@@ -16,7 +16,10 @@ export const TableProductManaget = () => {
     price: 0,
     image: "",
     category: "",
+    stock: 0
   });
+
+  const [validationErrors, setValidationErrors] = useState({});
 
   const handleEditProduct = (productId) => {
     const productToEdit = products.find((product) => product.id === productId);
@@ -44,17 +47,61 @@ export const TableProductManaget = () => {
     });
   };
 
-  const handleSaveChanges = () => {
-    editProduct(editedProduct.id, editedProduct);
-    setShowModal(false);
+  const validateForm = () => {
+    const errors = {};
 
-    Swal.fire({
-      icon: "success",
-      title: "¡Cambios guardados!",
-      text: "Los cambios han sido guardados correctamente.",
-      timer: 2000,
-      showConfirmButton: false,
-    });
+    if (!editedProduct.title) {
+      errors.title = "El título es obligatorio.";
+    } else if (editedProduct.title.length > 20) {
+      errors.title = "El título debe tener hasta 20 caracteres.";
+    }
+
+    if (!editedProduct.description) {
+      errors.description = "La descripción es obligatoria.";
+    } else if (editedProduct.description.length > 250) {
+      errors.description = "La descripción debe tener hasta 250 caracteres.";
+    }
+
+    const regexPrice = /^[1-9]\d*(\.\d+)?$/
+    if (!editedProduct.price) {
+      errors.price = "El precio es obligatorio";
+    } else if (!regexPrice.test(editedProduct.price)) {
+      errors.price = "El precio debe ser mayor a cero. Si no es un entero, asegurate de que termine con al menos un dígito después del punto";
+    }
+
+    const regexStock = /^[1-9]\d*$/
+    if (!editedProduct.stock) {
+      errors.stock = "El stock es obligatorio";
+    } else if (!regexStock.test(editedProduct.stock)) {
+      errors.stock = "El stock debe ser un número entero positivo";
+    }
+
+    if (!editedProduct.category) {
+      errors.category = "La categoría es obligatoria.";
+    } else if (editedProduct.category.length > 15) {
+      errors.category = "La categoría debe tener hasta 15 caracteres.";
+    }
+
+    setValidationErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSaveChanges = () => {
+    const isFormValid = validateForm();
+
+    if (isFormValid) {
+      editProduct(editedProduct.id, editedProduct);
+      setShowModal(false);
+
+      Swal.fire({
+        icon: "success",
+        title: "¡Cambios guardados!",
+        text: "Los cambios han sido guardados correctamente.",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
   };
 
   const handleDeleteProduct = (productId) => {
@@ -140,36 +187,68 @@ export const TableProductManaget = () => {
               <Form.Control
                 type="text"
                 name="title"
+                maxLength={20}
+                autoComplete="off"
                 value={editedProduct.title}
                 onChange={handleInputChange}
               />
+              {validationErrors.title && (
+                <div className="text-danger">{validationErrors.title}</div>
+              )}
             </Form.Group>
             <Form.Group>
               <Form.Label className="fw-bolder mt-2">Descripción</Form.Label>
               <Form.Control
                 type="text"
                 name="description"
+                maxLength={250}
+                autoComplete="off"
                 value={editedProduct.description}
                 onChange={handleInputChange}
               />
+              {validationErrors.description && (
+                <div className="text-danger">{validationErrors.description}</div>
+              )}
             </Form.Group>
             <Form.Group>
               <Form.Label className="fw-bolder mt-2">Precio</Form.Label>
               <Form.Control
                 type="number"
                 name="price"
+                autoComplete="off"
                 value={editedProduct.price}
                 onChange={handleInputChange}
               />
+              {validationErrors.price && (
+                <div className="text-danger">{validationErrors.price}</div>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className="fw-bolder mt-2">Stock</Form.Label>
+              <Form.Control
+                type="number"
+                name="stock"
+                autoComplete="off"
+                value={editedProduct.stock}
+                onChange={handleInputChange}
+              />
+              {validationErrors.stock && (
+                <div className="text-danger">{validationErrors.stock}</div>
+              )}
             </Form.Group>
             <Form.Group>
               <Form.Label className="fw-bolder mt-2">Categoría</Form.Label>
               <Form.Control
                 type="text"
                 name="category"
+                maxLength={15}
+                autoComplete="off"
                 value={editedProduct.category}
                 onChange={handleInputChange}
               />
+              {validationErrors.category && (
+                <div className="text-danger">{validationErrors.category}</div>
+              )}
             </Form.Group>
             <Form.Group>
               <Form.Label className="fw-bolder mt-2">Imagen</Form.Label>
