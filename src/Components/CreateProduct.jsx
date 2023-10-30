@@ -120,10 +120,8 @@ export const CreateProduct = () => {
       icon: "success",
       title: "Producto creado correctamente",
       showConfirmButton: false,
-      timer: 3000,
+      timer: 1500,
     });
-
-    window.location.reload()
   };
 
   return (
