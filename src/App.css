@@ -503,10 +503,19 @@
 }
 
 /**TableProductManaget**/
+.title-fs {
+  font-size: .75rem;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
 .IconManage{
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
+
 .IconManage:hover{
   transform: scale(1.2);
 }

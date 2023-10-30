@@ -81,7 +81,7 @@ export const TableProductManaget = () => {
   };
 
   return (
-    <div className="container-fluid shadow-lg rounded">
+    <div>
       <h2 className="fw-light text-start py-3">Administrar Productos</h2>
       <Table striped bordered hover>
         <thead>
@@ -90,7 +90,7 @@ export const TableProductManaget = () => {
             <th>Producto</th>
             <th className="d-none">Descripción</th>
             <th className="d-none">Categoría</th>
-            <th>Precio</th>
+            <th className="d-none">Precio</th>
             <th className="d-none">Stock</th>
             <th>Acciones</th>
           </tr>
@@ -106,10 +106,10 @@ export const TableProductManaget = () => {
                   style={{ width: "50px", height: "50px" }}
                 />
               </td>
-              <td>{product.title}</td>
+              <td className="title-fs">{product.title}</td>
               <td className="d-none">{product.description}</td>
               <td className="d-none">{product.category}</td>
-              <td>${product.price}</td>
+              <td className="d-none">${product.price}</td>
               <td className="d-none">{product.stock}</td>
 
               <td className="">
